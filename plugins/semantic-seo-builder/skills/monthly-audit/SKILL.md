@@ -394,3 +394,82 @@ After the existing 8 sections, append:
 - Top new links: [list]
 - Issues: [any toxic or over-optimized anchor text]
 ```
+
+---
+
+## CoR Step — 100-Point Semantic Compliance Audit
+
+Run this audit on the **top 3 traffic pages** each month (or any page flagged with declining rankings). Reference `cor/audits/semantic-compliance.md` for full scoring sheets.
+
+### Scoring System (6 categories, 100 points total)
+
+**1. Contextual Flow — 20 points**
+
+| Criterion | Points |
+|-----------|--------|
+| H1→H2→H3 logical order, attributes flow Unique→Root→Rare | 4 |
+| Contextual bridges between sections (no abrupt topic jumps) | 4 |
+| Subordinate text: first sentence after every heading directly answers heading | 4 |
+| Discourse integration: anchor segments connect paragraphs | 4 |
+| Correct attribute priority ordering throughout | 4 |
+
+**2. EAV Quality — 20 points**
+
+| Criterion | Points |
+|-----------|--------|
+| All key facts in explicit S-P-O triple structure | 4 |
+| All values specific — no "many", "some", "often", "affordable" | 4 |
+| Values consistent with 01-foundation.md KBT table | 4 |
+| Correct modality: "is" for facts, "can" for possibilities | 4 |
+| Claims have verifiable sources or owner confirmation | 4 |
+
+**3. Information Density — 15 points**
+
+| Criterion | Points |
+|-----------|--------|
+| One unique fact per sentence | 3 |
+| No filler words (actually, basically, really, very, overall…) | 3 |
+| No redundant restatements | 3 |
+| Average sentence length < 30 words | 3 |
+| No fluff paragraphs (every paragraph adds at least one EAV triple) | 3 |
+
+**4. Link Compliance — 15 points**
+
+| Criterion | Points |
+|-----------|--------|
+| Same anchor text used max 3× per page | 3 |
+| All internal links placed AFTER entity/concept is defined | 3 |
+| Annotation text (surrounding text) semantically supports each link | 3 |
+| Total internal links per page < 150 | 3 |
+| Links in main content area outweigh boilerplate links | 3 |
+
+**5. Format Compliance — 15 points**
+
+| Criterion | Points |
+|-----------|--------|
+| Content format matches search intent (list for how-to, table for comparison) | 3 |
+| Lists preceded by intro sentence stating item count | 3 |
+| Featured Snippet answer present: < 40 words directly after H2 | 3 |
+| Visual hierarchy: most important content prominent | 3 |
+| Semantic HTML used (article, section, h1-h3, ul/ol, table) | 3 |
+
+**6. Technical Compliance — 15 points**
+
+| Criterion | Points |
+|-----------|--------|
+| Schema correctly implemented, no validation errors | 3 |
+| Image alt text varies with topical attributes (not repeated H1) | 3 |
+| URL structure: lowercase, hyphens, entity name, max 5 words | 3 |
+| Page TTFB < 100ms (check GSC crawl stats) | 3 |
+| DOM node count < 1,500 | 3 |
+
+### Compliance Score Thresholds
+
+| Score | Status | Action |
+|-------|--------|--------|
+| 90–100 | Excellent | Monitor monthly |
+| 85–89 | Good — meets threshold | Minor improvements only |
+| 70–84 | Needs improvement | Schedule rewrite within 30 days |
+| < 70 | Failing | Priority rewrite this week |
+
+Add the score for each audited page to `monthly-report.md` as: `Page | Score | Category Breakdown | Priority Action`

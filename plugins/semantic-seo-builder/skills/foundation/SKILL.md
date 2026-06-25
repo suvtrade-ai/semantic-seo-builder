@@ -88,4 +88,36 @@ Table mapping queries to intent types (Informational / Commercial / Transactiona
 ## Competitor Gap Analysis
 For each competitor: Semantic Gap | Topical Gap | Entity Gap | Opportunity Rating
 
+---
+
+## CoR Step — Central Entity Attribute Mapping
+
+After the competitor gap analysis, define the **EAV attribute hierarchy** for the Central Entity (CE). This feeds directly into Phase 2 entity research and every content brief. Reference `cor/frameworks/eav-architecture.md` for full rules.
+
+**Attribute types (priority order — highest to lowest):**
+
+| Type | Definition | Rule |
+|------|-----------|------|
+| **Unique Attributes** | Features that uniquely identify this CE — no other entity shares the same attribute+value | Place early in all content. These prove expertise. |
+| **Root Attributes** | Essential for basic definition of the CE — without these, the entity is incomplete | Must be covered on every core page. |
+| **Rare Attributes** | Specific details not commonly found — proves depth of knowledge | Use to differentiate from competitors. |
+
+**Output a table in `01-foundation.md`:**
+
+```
+Central Entity (CE): [business type + city]
+
+| Attribute Type | Attribute | Value | Notes |
+|----------------|-----------|-------|-------|
+| Unique | [e.g. speciality not offered by competitors] | [specific value] | |
+| Unique | | | |
+| Root | [e.g. price range, turnaround time, location] | [specific value] | |
+| Root | | | |
+| Root | | | |
+| Rare | [e.g. specific technique, certification, niche process] | [specific value] | |
+| Rare | | | |
+```
+
+**KBT rule:** once these values are written here, they are locked. Every page, schema markup, and GBP listing must use the exact same values. Contradictions across pages destroy Knowledge-Based Trust (KBT) and increase Cost of Retrieval. See `cor/concepts/cost-of-retrieval.md`.
+
 Produce the file `01-foundation.md` and confirm it was saved.

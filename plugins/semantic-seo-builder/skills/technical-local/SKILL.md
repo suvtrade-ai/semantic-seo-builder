@@ -150,3 +150,56 @@ Validates the full LocalBusiness JSON-LD including the `floorLevel` property (if
 ```
 
 Checks all images on P1 pages: alt text presence and quality, file sizes (flag > 200KB), format compliance (WebP preferred), responsive image attributes, lazy loading implementation, and CLS prevention (explicit width/height). Run after all Kie API images are placed and before site launch.
+
+---
+
+## CoR Step — Cost of Retrieval Technical Audit
+
+After producing the schema and WordPress implementation guide, run the CoR technical audit and append a **CoR Score** to `05-technical-local.md`. Reference `cor/concepts/cost-of-retrieval.md` and `cor/audits/technical-audit.md`.
+
+### CoR Component Targets
+
+| Component | Factor | Target | Why |
+|-----------|--------|--------|-----|
+| **Crawl Cost** | Server response time (TTFB) | < 100ms | Crawler waits less |
+| **Crawl Cost** | Redirects per page | 0 (none) | Each redirect = extra request |
+| **Crawl Cost** | Error rate | 0% | No wasted crawl budget |
+| **Render Cost** | JavaScript dependency | Minimal | JS rendering costs CPU budget |
+| **Parse Cost** | DOM node count | < 1,500 | Fewer nodes = faster traversal |
+| **Parse Cost** | Text-to-code ratio | > 50% text | Higher = easier extraction |
+| **Extraction Cost** | Content clarity | Explicit EAV triples | Clear facts = lower extraction cost |
+| **Storage Cost** | Duplicate content | 0 duplicate pages | Wasted storage = lower crawl priority |
+| **Storage Cost** | Thin pages | 0 thin pages (< 300 words) | No-index or consolidate |
+
+### CoR Weighted Score (add to `05-technical-local.md`)
+
+Score each factor 1–5 during implementation planning. Revisit monthly.
+
+| Factor | Score /5 | Weight | Weighted |
+|--------|---------|--------|---------|
+| Server response time | | 20% | |
+| DOM simplicity | | 15% | |
+| Content clarity (EAV) | | 20% | |
+| URL efficiency | | 15% | |
+| Duplicate avoidance | | 15% | |
+| Error rate | | 15% | |
+| **Total** | | 100% | **/5** |
+
+**Interpretation:** 4.5–5.0 = Excellent | 3.5–4.4 = Good | 2.5–3.4 = Needs work | < 2.5 = Critical issues
+
+### WordPress-Specific CoR Implementation
+
+Add these to the WordPress implementation checklist:
+
+```
+[ ] Hosting TTFB < 100ms (verify with Hostinger speed tools after launch)
+[ ] Gzip or Brotli compression enabled (Hostinger hPanel → Speed → Compression)
+[ ] Browser caching headers set (LiteSpeed Cache plugin recommended)
+[ ] GeneratePress theme — DOM output is clean and minimal by default
+[ ] Rank Math: set noindex on tag archives, author archives, date archives
+[ ] Remove unused plugins — every plugin adds DOM nodes and HTTP requests
+[ ] Images: WebP format, lazy-loaded, max 200KB each (enforced by image-gen skill)
+[ ] URL structure: no stop words, max 5 words, entity name in slug
+[ ] Zero 404s before launch (check with Screaming Frog or Rank Math crawl)
+[ ] No duplicate content: canonical tags on all paginated or filtered URLs
+```

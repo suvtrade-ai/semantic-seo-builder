@@ -86,3 +86,51 @@ Before finalizing the topical map, validate the top 3 pillar pages using the Sea
 - Identify any SERP feature opportunities (featured snippets, PAA, local pack) that should influence page structure
 
 Add the sxo findings to `03-topical-map.md` under each pillar's entry as "SERP intent signal."
+
+---
+
+## CoR Step — 5-Component Validation + Semantic Distance Audit
+
+Before finalising `03-topical-map.md`, run the CoR validation pass. Reference `cor/frameworks/topical-maps.md` and `cor/concepts/semantic-distance.md`.
+
+### 5-Component Validation
+
+Confirm all five Topical Map components are explicitly defined in `03-topical-map.md`:
+
+| Component | Check | Status |
+|-----------|-------|--------|
+| **Central Entity (CE)** | Single entity stated — appears in boilerplate, menu, all documents | [ ] |
+| **Source Context (SC)** | Monetization model defined (e-commerce / B2B services / affiliate / publisher) | [ ] |
+| **Central Search Intent (CSI)** | Core predicates (verbs) identified — e.g. "buy, compare, find, book" | [ ] |
+| **Core Section (CS)** | Monetization content identified — highest PageRank flow target | [ ] |
+| **Author Section (AS)** | Authority content identified — links back to CS pages | [ ] |
+
+If any component is missing, do not proceed to Phase 4. Define the missing component first.
+
+### Hub-Spoke Ratio Check
+
+```
+[ ] Each cluster has ~1 hub : 7 spokes (±2 spokes is acceptable)
+[ ] Hub pages link DOWN to spokes
+[ ] Spoke pages link UP to hub + laterally to sibling spokes only
+[ ] No page is a dead-end (every page links to at least one other)
+[ ] No orphan pages (every page has ≥ 2 inbound links)
+```
+
+### Semantic Distance Audit
+
+For each topic in the topical map, confirm it passes the semantic distance test. A topic is **too far** from the CE if:
+- It requires more than 2 contextual bridges to connect back to the CE
+- A competitor ranking for this topic has a completely different SC (Source Context)
+- Removing this topic would not affect the CE's authority or conversion funnel
+
+**Mark each pruned topic:**
+
+```
+| Topic | Pruned Reason | Semantic Distance | Alternative Treatment |
+|-------|--------------|------------------|-----------------------|
+```
+
+Topics outside semantic distance from the CE dilute topical authority and increase Cost of Retrieval. See `cor/concepts/semantic-distance.md`.
+
+Append the validation tables to `03-topical-map.md` as a final section before confirming Phase 3 is complete.

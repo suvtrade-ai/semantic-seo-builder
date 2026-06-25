@@ -211,3 +211,57 @@ Our Kie API image generation skill reads the article's section structure and gen
 7. Save final article to `04-content-system.md` inventory
 
 Write each completed article URL to `weekly-log.md` for the monthly audit to track.
+
+---
+
+## CoR Step — EAV Brief Requirements + Algorithmic Authorship Rules
+
+Every semantic brief must include two CoR sections before it goes to a writer (or to `/blog write`). Reference `cor/frameworks/content-briefs.md` and `cor/frameworks/algorithmic-authorship.md`.
+
+### Section A — EAV Requirements Table
+
+Add this block to every brief:
+
+```
+### EAV Requirements
+
+| Entity | Attribute Type | Attribute | Required Value | Source |
+|--------|---------------|-----------|---------------|--------|
+| [CE]   | Unique | [e.g. speciality] | [locked value from 01-foundation.md] | owner |
+| [CE]   | Root | [e.g. price range] | [locked value] | owner |
+| [CE]   | Root | [e.g. location] | [locked NAP] | NAP |
+| [CE]   | Rare | [e.g. technique detail] | [specific value] | research |
+
+Attribute priority in writing order: Unique → Root → Rare
+All values must match 01-foundation.md KBT table exactly.
+```
+
+### Section B — Algorithmic Authorship Rules
+
+Add this block to every brief as a writing instruction set:
+
+```
+### Writing Rules (Algorithmic Authorship)
+
+Sentence structure:
+- S-P-O only: Subject → Predicate → Object. "G.Armani Suit offers bespoke suits in Bangkok." Not "In Bangkok, bespoke suits are offered by G.Armani Suit."
+- One fact per sentence. Max 30 words per sentence.
+- Explicit entity naming. No ambiguous pronouns ("it", "they", "this").
+
+Modality:
+- Facts → "is / are" (definitive)
+- Variable outcomes → "can / may"
+- Recommendations → "should"
+- Uncertain claims → "might / could"
+
+Remove these words before submitting:
+actually, basically, really, very, quite, rather, somewhat, overall,
+in conclusion, as stated before, it goes without saying, needless to say,
+at the end of the day, in my opinion, I had the pleasure of,
+it is important to note that, in today's world, Firstly/Secondly
+
+Featured Snippet target: answer the H1 in <40 words in the first paragraph.
+First sentence after every H2/H3 must directly answer the heading as a question.
+```
+
+These rules are enforced during `/blog factcheck` and the monthly semantic compliance audit.

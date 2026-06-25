@@ -76,3 +76,42 @@ If DataForSEO is connected, use it during entity validation to pull real keyword
 This replaces the manual SERP volume estimation step with real data. Use the returned CPC and competition scores to prioritize which entity attributes to cover first (highest volume, lowest competition = fastest wins).
 
 **If DataForSEO is NOT connected:** proceed with WebSearch-based SERP estimation. Flag this in `02-semantic-research.md` as "estimated volumes — upgrade with DataForSEO when available."
+
+---
+
+## CoR Step — EAV Triple Validation + Knowledge-Based Trust
+
+After completing the Attribute Matrix, run an EAV validation pass on all discovered entities. Reference `cor/frameworks/eav-architecture.md` and `cor/audits/knowledge-graph-validation.md`.
+
+### EAV Triple Validation Checklist
+
+For every key fact in `02-semantic-research.md`, verify:
+
+```
+[ ] Explicit naming — entity is named directly, no ambiguous pronouns
+[ ] Specific values — numbers and measurements, not "many" or "some"
+[ ] Definitive modality — "is" for facts, "can" for possibilities, "should" for advice
+[ ] Consistent units — same measurement system throughout
+[ ] Source-backed — fact can be verified from Wikipedia, schema.org, or authoritative source
+```
+
+### Knowledge-Based Trust (KBT) Consistency Check
+
+All EAV triples extracted here become the **locked source of truth** for the entire site. Add a KBT table to `02-semantic-research.md`:
+
+```
+| Entity | Attribute | Locked Value | Source |
+|--------|-----------|-------------|--------|
+| [CE]   | Price range | [exact range] | [source] |
+| [CE]   | Location | [exact address] | NAP |
+| [CE]   | Turnaround time | [X days] | owner confirmed |
+```
+
+**KBT killers to flag and reject:**
+- Vague values: "affordable", "quick", "high quality" → replace with specific numbers
+- Contradictory values: if Page A says "2–3 days" and Page B says "3–5 days" → standardize now
+- Missing citations: claims without a verifiable source → add source or remove
+
+**Why this step matters:** Google's Knowledge-Based Trust patent scores sites on consistency of facts across pages. Contradictions increase Cost of Retrieval and reduce trust scores. See `cor/concepts/cost-of-retrieval.md` for the full breakdown.
+
+Append the KBT table to `02-semantic-research.md` before Phase 3.
